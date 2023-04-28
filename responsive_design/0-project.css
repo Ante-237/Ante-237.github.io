@@ -1,0 +1,53 @@
+.card {
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    overflow: hidden;
+   
+  }
+
+  .card ol{
+    list-style: none;
+  }
+  
+  .card img {
+    width: 10%;
+    border-radius: 10%;
+    height: auto;
+    display: block;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .card-content h2 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  .card-content p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .card-content h3 {
+    font-size: 18px;
+  }
+  
+  .card-content ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .card-content li {
+    margin-bottom: 5px;
+  }
+
+
+  .holder{
+    flex-wrap: wrap;
+  }
+  
