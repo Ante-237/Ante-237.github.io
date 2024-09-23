@@ -17,84 +17,166 @@
 <link href="0-home.css" rel="stylesheet">
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="0-home.css" rel="stylesheet">
+<link href="cardview.css" rel="stylesheet">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-      .b-example-divider {
-        width: 100%;
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
+.card {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
 
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
+.mediav {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
 
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
+.mediav iframe, .mediav img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
+.media {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
 
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
+.image-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
 
-      .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+.image-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
-      }
-      .bd-mode-toggle {
-        z-index: 1500;
-      }
+.image-carousel img.active {
+    display: block;
+}
+
+/* Arrow navigation */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+/* Hide the scrollbar */
+.image-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.tech-stack {
+    padding: 20px;
+    background-color: #f8f8f8;
+    flex: 1;
+}
+
+.tech-stack h3 {
+    margin-bottom: 10px;
+}
+
+.tech-stack ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-stack ul li {
+    background-color: #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.description {
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+.description h3 {
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.description a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.description a:hover {
+    text-decoration: underline;
+}
+
+.image-container img {
+    width: 100%;  /* Adjust to fit the div */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Limit max size */
+    /* You can also set height or other dimensions as needed */
+}
+
     </style>
 
     
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+     <link href="cover.css" rel="stylesheet"> 
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -113,7 +195,7 @@
       </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
               type="button"
@@ -121,7 +203,7 @@
               data-bs-toggle="dropdown"
               aria-label="Toggle theme (auto)">
         <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span> 
       </button>
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
@@ -146,10 +228,10 @@
           </button>
         </li>
       </ul>
-    </div>
+    </div> -->
 
     
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto  flex-column">
   <header class="mb-auto">
     <div>
       <h3 class="float-md-start mb-0">NWALAHNJIE</h3>
@@ -162,207 +244,281 @@
   </header>
 
   <main class="px-3">
-    <p class="lead">  
-       
+    <p class="lead">   
+
+
+      <div class="card">
+        <div class="media">
       
+            <div class="arrow left" onclick="prevImage()">&#10094;</div>
+            
       
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/porfolioWebsite.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Website build to provide individuals  events happening around them. It provides a unified platform where you can know about all events happening
-            around and volunteer to be part.
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-3"> HTML, CSS</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> Javascript, Python, Django</li>
-             </ol>
+            <div class="image-container">
+                <img src="p-projects/mathfrenzy.png" alt="Image 1" class="active">
+                <img src="p-projects/ingame.png" alt="Image 2">
+            </div>
+            
+      
+            <div class="arrow right" onclick="nextImage()">&#10095;</div>
+        </div>
+        
+        <div class="tech-stack">
+            <h3></h3>
+            <ul>
+                <li>C#</li>
+                <li>Unity</li>
+            </ul>
+        </div>
+      
+        <div class="description">
+            <h3></h3>
+            <p>
+               MathFrenzy is a puzzle math mobile game. It allows players to find various final values through various math combinations. Project is currently under development.
+            </p>
+            <p>
+                <a href="https://play.unity.com/en/user/8542a6fc-13f7-4305-b4cb-27193dfe6912" target="_blank">Play Here</a>
+            </p>
         </div>
       </div>
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectSiz.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Vr Surgery Simulation build for medical students to practice various surgery procedures. this included rooms such as the Anatomy room which allowed,
-            students to study anatomy. This solution was built for usage with handtracking and controller based usage. 
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-3"> Unity, Blender</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# , Oculus IntegrationToolkit</li>
-             </ol>
-        </div>
-      </div>
+  
 
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectSeven.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Vr Word Puzzle for students to learn pronounciations and spelling.
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity, Blender, Photoshop</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# , Oculus IntegrationToolkit</li>
-             </ol>
+      
+      <div class="card">
+        <div class="mediav">
+            <iframe class="video" src="https://youtu.be/NR_nDEseYDw" frameborder="0" allowfullscreen></iframe>
         </div>
-      </div>
+        
+        <div class="tech-stack">
+            <h3></h3>
+            <ul>
+                <li>Unity</li>
+                <li>Blender </li>
+                <li> Adobe Photoshop</li>
+                <li> Oculus Integration</li>
+                <li>C#</li>
+            </ul>
+        </div>
 
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projecteight.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p> World building Virtual Reality application for building and constructions Simulation in the virtual world before application 
-            in the real world.
+        <div class="description">
+            <h3></h3>
+            <p>
+                VR Simulation created for teaching nurses how to use an Electrocardiogram. 
+                The simulation was created as a demo featuring high quality assets while running standalone on Quest 3.
+            </p>
+            <p>
+             <!-- <a href="https://github.com/your-username/your-project" target="_blank">LINK HERE</a> -->
           </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity, Blender, Photoshop</li>
-              <li class="mt-auto text-bg-danger rounded col-md-7"> C#, Python , Oculus IntegrationToolkit</li>
-             </ol>
         </div>
+    </div>
+
+<!-- bug catching game for MR -->
+    <div class="card">
+      <div class="mediav">
+          <iframe class="video" src="https://youtu.be/xY2n1ila_pI" frameborder="0" allowfullscreen></iframe>
       </div>
       
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectSeven.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Vr Word Puzzle for students to learn pronounciations and spelling.
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity, Blender, Photoshop</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# , Oculus IntegrationToolkit</li>
-             </ol>
-        </div>
+      <div class="tech-stack">
+          <h3></h3>
+          <ul>
+              <li>Unity</li>
+              <li> Oculus Integration </li>
+              <li> Meta Presence Platform</li>
+              <li>C#</li>
+          </ul>
       </div>
 
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectTwo.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Vr Simulation for Medical records diagnosis before sugery.
+      <div class="description">
+          <h3></h3>
+          <p>
+              Created in Collaboration with other XR Developers, Bugskill is a mixed reality game for catching bugs without your house. Built specifically for Meta Quest 2. Directly contributed in ideation of mechanics and gameloop
           </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity, Blender, Photoshop</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# , XR Interaction Toolkit</li>
-             </ol>
-        </div>
+          <p>
+            <a href="https://github.com/your-username/your-project" target="_blank">LINK HERE</a>
+        </p>
       </div>
+  </div>
 
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectThree.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Application Design for a Food order Applicaiton
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Figma</li>
-             </ol>
-        </div>
+
+  <!-- farming stuff -->
+  <div class="card">
+    <div class="mediav">
+        <iframe class="video" src="https://youtu.be/oBLka81y49g" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="tech-stack">
+        <h3></h3>
+        <ul>
+            <li>Unity</li>
+            <li> Unity Interaction Toolkit</li>
+            <li> Blender </li>
+            <li>C#</li>
+        </ul>
+    </div>
+
+    <div class="description">
+        <h3></h3>
+        <p>
+            Farming simulation teaches you to grow a plant. It uses custom toon shaders included normal flipping for certain shapes made using 
+            Blender.
+        </p>
+        <p>
+          <a href="https://github.com/Ante-237/FARMSIM.git" target="_blank">LINK HERE</a>
+      </p>
+    </div>
+</div>
+
+
+
+
+  <!-- VR Tour -->
+
+  <div class="card">
+    <div class="mediav">
+        <iframe class="video" src="https://youtu.be/qQ3zEZvuS1I" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="tech-stack">
+        <h3></h3>
+        <ul>
+            <li>Unity</li>
+            <li> Unity Interaction Toolkit</li>
+            <li>C#</li>
+        </ul>
+    </div>
+
+    <div class="description">
+        <h3></h3>
+        <p>
+            360 Tour Made for The African Leadership University Rwanda, the images used in the 360 Tour was captured using a pixel 6 sphere mode.
+        </p>
+        <p>
+          <a href="https://github.com/Ante-237/ALU_360_TOUR.git" target="_blank">LINK HERE</a>
+      </p>
+    </div>
+</div>
+
+
+  <!-- line connect -->
+  <div class="card">
+    <div class="mediav">
+        <iframe class="video" src="https://youtu.be/akxSiOtK1h8" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="tech-stack">
+        <h3></h3>
+        <ul>
+            <li> Unity </li>
+            <li> Meta Presence Platform </li>
+            <li> Oculus Interaction Toolkit </li>
+            <li> C# </li>
+        </ul>
+    </div>
+
+    <div class="description">
+        <h3></h3>
+        <p>
+            Line Connect allows usings to place the board anywhere in thier environment and play the puzzle.
+             It allows for creation of grid of massive sizes dynamically without any code changes. Works on both Quest 3 , Quest Pro, and Quest 2
+
+        </p>
+        <p>
+          <a href="https://github.com/Ante-237/SM_LINE_CONNECT.git" target="_blank">LINK HERE</a>
+      </p>
+    </div>
+</div>
+
+
+  <!-- vr bowlingg -->
+  <div class="card">
+    <div class="mediav">
+        <iframe class="video" src="https://youtu.be/rlPDPv7e4Q4" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="tech-stack">
+        <h3></h3>
+        <ul>
+            <li> Unity </li>
+            <li> Unity Interaction Toolkit </li>
+            <li> C# </li>
+        </ul>
+    </div>
+
+    <div class="description">
+        <h3></h3>
+        <p>
+           Bowling Game made for VR which features Dynamic pin loading, score board update and various sounds synchronization when rolling.
+        </p>
+        <p>
+          <a href="https://github.com/Ante-237/VR_Bowling.git" target="_blank">LINK HERE</a>
+      </p>
+    </div>
+</div>
+
+  <!-- surgery lab stuff -->
+
+
+  <!-- other unity projects -->
+
+  <div class="card">
+    <div class="mediav">
+        <iframe class="video" src="https://youtu.be/50fl3ZwOijk" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="tech-stack">
+        <h3></h3>
+        <ul>
+          <li> Unity </li>
+          <li> C# </li>
+        </ul>
+    </div>
+
+    <div class="description">
+        <h3></h3>
+        <p>
+            Dungeon Show Off Camera Animation and Movements
+        </p>
+        <p>
+          
+      </p>
+    </div>
+</div>
+
+
+<!-- all projects on unity learn-->
+
+<div class="card">
+  <div class="media">
+
+      <div class="arrow left" onclick="prevImage()">&#10094;</div>
+      
+
+      <div class="image-carousel">
+          <img src="p-projects/ballroll.png" alt="Image 1" class="active">
+          <img src="p-projects/rock_paper_scissors.png" alt="Image 2">
       </div>
+      
 
+      <div class="arrow right" onclick="nextImage()">&#10095;</div>
+  </div>
+  
+  <div class="tech-stack">
+      <h3></h3>
+      <ul>
+          <li>C#</li>
+          <li>Unity</li>
+      </ul>
+  </div>
 
-
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectFour.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Full Animation Sequencing with Primitive, Character design to perform more than 20 different complex animations
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity, Photoshop</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C#</li>
-             </ol>
-        </div>
-      </div>
-
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectFive.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p>Animation and Modeling of a Mech Hero
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Blender , Mixamo</li>
-             </ol>
-        </div>
-      </div>
-
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projecteleven.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p> Fruit slice for PC</p>
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# </li>
-             </ol>
-        </div>
-      </div>
-
-
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectTwelve.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p> Sample low end version of a brick game with Just one Level.
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# </li>
-             </ol>
-        </div>
-      </div>
-
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/trivialProject. .png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p> Advance Maze Game made using OOP concepts such as Interfaces and Abstraction to reduce dependency and coupling.
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity, Photoshop</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# </li>
-             </ol>
-        </div>
-      </div>
-
-
-      <br/>
-      <div class="card bg-gradient bg-secondary p-5"> 
-        <img src="p-projects/projectTen.png" alt="Image" class="rounded-3" id="card-img" >
-        <div class="card-info">
-       
-          <p> Ball Rolling Game with infinite levels.
-          </p>
-          <br/>
-             <ol class="list-unstyled">
-              <li class="mt-auto text-bg-warning rounded col-md-5"> Unity</li>
-              <li class="mt-auto text-bg-danger rounded col-md-6"> C# </li>
-             </ol>
-        </div>
-      </div>
+  <div class="description">
+      <h3></h3>
+      <p>
+          Projects Made and Deployed on Unity Play, Access and  Play some of the projects using the link below
+      </p>
+      <p>
+          <a href="https://play.unity.com/en/user/8542a6fc-13f7-4305-b4cb-27193dfe6912" target="_blank">Play Here</a>
+      </p>
+  </div>
+</div>
 
     </p>
 
@@ -375,8 +531,6 @@
     <p>Let's Connect on <a href="linkedin.com/in/nwalahnjie-akumawah-51a88b20b" class="text-white">Linkedin</a></p>
   </footer>
 </div>
-
-
-    
   </body>
+  <script src="sample.js"></script>
 </html>
